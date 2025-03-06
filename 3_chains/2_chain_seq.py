@@ -32,7 +32,7 @@ prepare_for_translation = RunnableLambda(lambda output: {"text": output, "langua
 
 
 # Create the combined chain using LangChain Expression Language (LCEL)
-chain = animal_facts_template | model | StrOutputParser() | prepare_for_translation | translation_template | model | StrOutputParser()
+chain = animal_facts_template | model | StrOutputParser() | prepare_for_translation |  translation_template | model | StrOutputParser()
 
 print("after chain")
 # Run the chain
@@ -40,4 +40,4 @@ result = chain.invoke({"animal": "cat", "count": 2})
 
 # Output
 print(result)
-print(count_words)
+
