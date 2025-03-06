@@ -20,8 +20,8 @@ Steps to replicate this example:
 
 # Setup Firebase Firestore
 PROJECT_ID = "langchainfire"
-SESSION_ID = "user_session_123"
-COLLECTION_NAME = "chat_history"
+SESSION_ID = "user_session_abc"
+COLLECTION_NAME = "chat_history1"
 
 # Initialize Firestore Client
 print("Initializing Firestore Client...")
@@ -55,4 +55,4 @@ while True:
     ai_response = model.invoke(chat_history.messages)
     chat_history.add_ai_message(ai_response.content)
 
-    print(f"AI: {ai_response.content}")
+    # print(f"AI: {ai_response.content}")
