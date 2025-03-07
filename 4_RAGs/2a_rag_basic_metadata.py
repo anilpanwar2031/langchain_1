@@ -26,21 +26,27 @@ if not os.path.exists(persistent_directory):
 
     # List all text files in the directory
     book_files = [f for f in os.listdir(books_dir) if f.endswith(".txt")]
+    print("Book === " , book_files)
 
     # Read the text content from each file and store it with metadata
-    documents = []
+    docu = []
+
     for book_file in book_files:
         file_path = os.path.join(books_dir, book_file)
-        loader = TextLoader(file_path)
+        loader = TextLoader(file_path, encoding="utf-8")
         book_docs = loader.load()
+        count = 1
         for doc in book_docs:
+
+            print("doc = ", count , book_file)
             # Add metadata to each document indicating its source
             doc.metadata = {"source": book_file}
-            documents.append(doc)
+            docu.append(doc)
+            count = count+1
 
     # Split the documents into chunks
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-    docs = text_splitter.split_documents(documents)
+    docs = text_splitter.split_documents(docu)
 
     # Display information about the split documents
     print("\n--- Document Chunks Information ---")
